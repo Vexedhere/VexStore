@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chethan's Server</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section {
+      display: none;
+      padding: 40px 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .ranks-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .rank-card {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .rules-list {
+      font-size: 1.1em;
+      white-space: pre-line;
+    }
+
+    #contact p a, #about p a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    img.qr {
+      display: block;
+      margin: 20px auto;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong>My Server</strong></div>
+  <nav class="nav-links">
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('store')">Store</a>
+    <a onclick="showSection('rules')">Rules</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('team')">Team</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="active">
+  <h1>Welcome to Our Server</h1>
+  <p>Hello! I’m <strong>Chethan</strong>. Enjoy your gameplay and thank you for visiting!</p>
+</section>
+
+<section id="store">
+  <h2>Store</h2>
+  <h3>Ranks</h3>
+  <div class="ranks-container">
+    <div class="rank-card"><h4 style="color:plum;">ELITE</h4><p>All MVP perks + fly.</p><p><strong>₹1,080.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:darkred;">OVERLORD</h4><p>Top-tier exclusive perks.</p><p><strong>₹730.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:goldenrod;">VIP+</h4><p>VIP perks + rewards.</p><p><strong>₹650.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:lightblue;">MVP</h4><p>Custom kit & home.</p><p><strong>₹519.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:gold;">VIP</h4><p>Colored name, early access.</p><p><strong>₹360.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:salmon;">Karen</h4><p>Basic perks & tag.</p><p><strong>₹240.00</strong></p></div>
+    <div class="rank-card"><h4 style="color:gray;">Rookie</h4><p>Starter perks.</p><p><strong>₹150.00</strong></p></div>
+  </div>
+
+  <h3>Coins</h3>
+  <div class="ranks-container">
+    <div class="rank-card"><h4>1,000 Coins</h4><p>₹100.00</p></div>
+    <div class="rank-card"><h4>2,000 Coins</h4><p>₹180.00</p></div>
+    <div class="rank-card"><h4>4,000 + 1,000 Free</h4><p>₹320.00</p></div>
+  </div>
+
+  <h3>Crate Keys</h3>
+  <div class="ranks-container">
+    <div class="rank-card"><h4>Seasonal Crate</h4><p>₹599.00</p></div>
+    <div class="rank-card"><h4>Legendary Crate</h4><p>₹499.00</p></div>
+    <div class="rank-card"><h4>Ultimate Crate</h4><p>₹349.00</p></div>
+    <div class="rank-card"><h4>Prime Crate</h4><p>₹199.00</p></div>
+  </div>
+
+  <p style="text-align:center; margin-top: 30px;">Scan the QR code below to pay:</p>
+  <img src="61nqu8ptpcvnwly1moze.jpg" alt="QR Code" class="qr">
+  <p style="text-align:center;">Send payment proof on Discord!</p>
+</section>
+
+<section id="rules">
+  <h2>Server Rules</h2>
+  <div class="rules-list">
+𝟏. 𝐃𝐨 𝐧𝐨𝐭 𝐢𝐦𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐭𝐞 𝐨𝐭𝐡𝐞𝐫𝐬.<br>
+𝟐. 𝐍𝐨 𝐢𝐧𝐚𝐩𝐩𝐫𝐨𝐩𝐫𝐢𝐚𝐭𝐞 𝐜𝐨𝐧𝐭𝐞𝐧𝐭.<br>
+𝟑. 𝐊𝐞𝐞𝐩 𝐝𝐫𝐚𝐦𝐚 𝐚𝐰𝐚𝐲.<br>
+𝟒. 𝐍𝐨 𝐬𝐞𝐱𝐮𝐚𝐥 𝐜𝐨𝐧𝐭𝐞𝐧𝐭.<br>
+𝟓. 𝐍𝐨 𝐬𝐩𝐚𝐦𝐦𝐢𝐧𝐠.<br>
+𝟔. 𝐀𝐯𝐨𝐢𝐝 𝐫𝐞𝐥𝐢𝐠𝐢𝐨𝐮𝐬/𝐩𝐨𝐥𝐢𝐭𝐢𝐜𝐚𝐥 𝐝𝐞𝐛𝐚𝐭𝐞𝐬.<br>
+𝟕. 𝐃𝐨 𝐧𝐨𝐭 𝐬𝐡𝐚𝐫𝐞 𝐥𝐢𝐧𝐤𝐬.<br>
+𝟖. 𝐍𝐨 𝐬𝐞𝐥𝐥𝐢𝐧𝐠.<br>
+𝟗. 𝐃𝐨 𝐧𝐨𝐭 𝐬𝐡𝐚𝐫𝐞 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐢𝐧𝐟𝐨.<br>
+𝟏𝟎. 𝐃𝐨𝐧’𝐭 𝐛𝐞𝐠 𝐟𝐨𝐫 𝐫𝐨𝐥𝐞𝐬.
+  </div>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Hi I am Chethan! Please subscribe to my channel <a href="https://www.youtube.com/@Chethanorg" target="_blank">youtube.com/@Chethanorg</a> and join my Discord community!</p>
+</section>
+
+<section id="team">
+  <h2>Team</h2>
+  <div class="ranks-container">
+    <div class="rank-card"><h4 style="color:crimson;">OWNER</h4><p>Chethan</p></div>
+    <div class="rank-card"><h4 style="color:orange;">ADMIN</h4><p>GamerBoy</p></div>
+    <div class="rank-card"><h4 style="color:aqua;">STAFF</h4><p>Sai</p></div>
+  
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Join our Discord and create a ticket for support: <a href="https://discord.gg/PmXzbjN8Pq" target="_blank">https://discord.gg/PmXzbjN8Pq</a></p>
+</section>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
