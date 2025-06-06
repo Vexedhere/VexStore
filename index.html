@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Chethan's Server</title>
+  <title>VexedStore</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #cce7ff; /* Light blue */
     }
-
     header {
-      background: #222;
-      color: #fff;
+      background: #111;
+      color: white;
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
@@ -20,7 +20,6 @@
       top: 0;
       z-index: 1000;
     }
-
     .nav-links a {
       color: white;
       margin-left: 20px;
@@ -28,59 +27,88 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     section {
       display: none;
-      padding: 40px 30px;
+      padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     section.active {
       display: block;
     }
-
-    .ranks-container {
+    /* Orange Join Now card for Home */
+    #home .join-now {
+      background-color: orange;
+      color: white;
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(255, 140, 0, 0.6);
+      transition: transform 0.2s;
+    }
+    #home .join-now:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(255, 140, 0, 0.9);
+    }
+    /* Dark blue cards for all other sections */
+    .card-container {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-
-    .rank-card {
-      background: #f5f5f5;
+    .product-card {
+      background: #1a237e; /* Dark blue */
+      color: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 8px;
       width: 200px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ccc;
       text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
     }
-
-    .rules-list {
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px #ffa500;
+    }
+    /* Rules section styling with dark blue background and white text */
+    #rules .rules-list {
       font-size: 1.1em;
       white-space: pre-line;
+      color: white;
+      background: #1a237e; /* Dark blue */
+      padding: 20px 30px;
+      border-radius: 8px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
-
-    #contact p a, #about p a {
-      color: #007BFF;
+    #contact a {
+      color: #007bff;
       text-decoration: none;
     }
-
-    img.qr {
-      display: block;
-      margin: 20px auto;
-      max-width: 200px;
+    .server-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div><strong>My Server</strong></div>
+  <div><strong>VexedStore</strong></div>
   <nav class="nav-links">
     <a onclick="showSection('home')">Home</a>
     <a onclick="showSection('store')">Store</a>
+    <a onclick="showSection('server')">Server</a>
     <a onclick="showSection('rules')">Rules</a>
     <a onclick="showSection('about')">About</a>
     <a onclick="showSection('team')">Team</a>
@@ -89,81 +117,99 @@
 </header>
 
 <section id="home" class="active">
-  <h1>Welcome to Our Server</h1>
-  <p>Hello! I’m <strong>Chethan</strong>. Enjoy your gameplay and thank you for visiting!</p>
+  <h1>Welcome to VexedStore</h1>
+  <p>Hello, I am CHETHAN. Buy ranks, coins, and crate keys to support our server!</p>
+  <div>
+    <span class="join-now" onclick="showSection('server')">Join Now</span>
+  </div>
 </section>
 
 <section id="store">
   <h2>Store</h2>
+
   <h3>Ranks</h3>
-  <div class="ranks-container">
-    <div class="rank-card"><h4 style="color:plum;">ELITE</h4><p>All MVP perks + fly.</p><p><strong>₹1,080.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:darkred;">OVERLORD</h4><p>Top-tier exclusive perks.</p><p><strong>₹730.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:goldenrod;">VIP+</h4><p>VIP perks + rewards.</p><p><strong>₹650.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:lightblue;">MVP</h4><p>Custom kit & home.</p><p><strong>₹519.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:gold;">VIP</h4><p>Colored name, early access.</p><p><strong>₹360.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:salmon;">Karen</h4><p>Basic perks & tag.</p><p><strong>₹240.00</strong></p></div>
-    <div class="rank-card"><h4 style="color:gray;">Rookie</h4><p>Starter perks.</p><p><strong>₹150.00</strong></p></div>
+  <div class="card-container">
+    <div class="product-card" onclick="window.location.href='elite.html'"><h4 style="color: plum;">ELITE</h4><p>₹1,080</p></div>
+    <div class="product-card" onclick="window.location.href='overlord.html'"><h4 style="color: darkred;">OVERLORD</h4><p>₹730</p></div>
+    <div class="product-card" onclick="window.location.href='vipplus.html'"><h4 style="color: goldenrod;">VIP+</h4><p>₹650</p></div>
+    <div class="product-card" onclick="window.location.href='mvp.html'"><h4 style="color: lightblue;">MVP</h4><p>₹519</p></div>
+    <div class="product-card" onclick="window.location.href='vip.html'"><h4 style="color: gold;">VIP</h4><p>₹360</p></div>
+    <div class="product-card" onclick="window.location.href='karen.html'"><h4 style="color: salmon;">Karen</h4><p>₹240</p></div>
+    <div class="product-card" onclick="window.location.href='rookie.html'"><h4 style="color: gray;">Rookie</h4><p>₹150</p></div>
   </div>
 
   <h3>Coins</h3>
-  <div class="ranks-container">
-    <div class="rank-card"><h4>1,000 Coins</h4><p>₹100.00</p></div>
-    <div class="rank-card"><h4>2,000 Coins</h4><p>₹180.00</p></div>
-    <div class="rank-card"><h4>4,000 + 1,000 Free</h4><p>₹320.00</p></div>
+  <div class="card-container">
+    <div class="product-card" onclick="window.location.href='coins1000.html'"><h4>1,000 Coins</h4><p>₹100</p></div>
+    <div class="product-card" onclick="window.location.href='coins2000.html'"><h4>2,000 Coins</h4><p>₹180</p></div>
+    <div class="product-card" onclick="window.location.href='coins5000.html'"><h4>4,000 + 1,000 Free</h4><p>₹320</p></div>
   </div>
 
   <h3>Crate Keys</h3>
-  <div class="ranks-container">
-    <div class="rank-card"><h4>Seasonal Crate</h4><p>₹599.00</p></div>
-    <div class="rank-card"><h4>Legendary Crate</h4><p>₹499.00</p></div>
-    <div class="rank-card"><h4>Ultimate Crate</h4><p>₹349.00</p></div>
-    <div class="rank-card"><h4>Prime Crate</h4><p>₹199.00</p></div>
+  <div class="card-container">
+    <div class="product-card" onclick="window.location.href='seasonal.html'"><h4>Seasonal Crate</h4><p>₹599</p></div>
+    <div class="product-card" onclick="window.location.href='legendary.html'"><h4>Legendary Crate</h4><p>₹499</p></div>
+    <div class="product-card" onclick="window.location.href='ultimate.html'"><h4>Ultimate Crate</h4><p>₹349</p></div>
+    <div class="product-card" onclick="window.location.href='prime.html'"><h4>Prime Crate</h4><p>₹199</p></div>
   </div>
+</section>
 
-  <p style="text-align:center; margin-top: 30px;">Scan the QR code below to pay:</p>
-  <img src="img.jpg" alt="QR Code" class="qr">
-  <p style="text-align:center;">Send payment proof on Discord!</p>
+<section id="server">
+  <div class="server-title" style="color:#222; font-weight:bold;">Server Features</div>
+  <div class="card-container">
+    <div class="product-card"><strong>IP Address</strong><br>gold.magmanode.com</div>
+    <div class="product-card"><strong>Port</strong><br>69420</div>
+    <div class="product-card" onclick="showSection('rules')"><strong>Rules</strong><br>View Server Rules</div>
+    <div class="product-card"><strong>Leaderboards</strong><br><a href="https://dev.bukkit.org/projects/holographic-displays" target="_blank" style="color: #ffa500;">HolographicDisplays</a></div>
+    <div class="product-card"><strong>Any Version</strong><br><a href="https://www.spigotmc.org/resources/viaversio.19254/" target="_blank" style="color: #ffa500;">ViaVersion</a></div>
+    <div class="product-card"><strong>Player Shops</strong><br><a href="https://www.spigotmc.org/resources/economyshopgui.69927/" target="_blank" style="color: #ffa500;">EconomyShopGUI</a></div>
+    <div class="product-card"><strong>Coin Shop</strong><br><a href="https://www.spigotmc.org/resources/coinshop-reward-your-players-with-a-custom-currency.109019/" target="_blank" style="color: #ffa500;">CoinShop Plugin</a></div>
+    <div class="product-card"><strong>Land Claims</strong><br><a href="https://dev.bukkit.org/projects/landclaiming" target="_blank" style="color: #ffa500;">LandClaiming</a></div>
+  </div>
 </section>
 
 <section id="rules">
   <h2>Server Rules</h2>
   <div class="rules-list">
-𝟏. 𝐃𝐨 𝐧𝐨𝐭 𝐢𝐦𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐭𝐞 𝐨𝐭𝐡𝐞𝐫𝐬.<br>
-𝟐. 𝐍𝐨 𝐢𝐧𝐚𝐩𝐩𝐫𝐨𝐩𝐫𝐢𝐚𝐭𝐞 𝐜𝐨𝐧𝐭𝐞𝐧𝐭.<br>
-𝟑. 𝐊𝐞𝐞𝐩 𝐝𝐫𝐚𝐦𝐚 𝐚𝐰𝐚𝐲.<br>
-𝟒. 𝐍𝐨 𝐬𝐞𝐱𝐮𝐚𝐥 𝐜𝐨𝐧𝐭𝐞𝐧𝐭.<br>
-𝟓. 𝐍𝐨 𝐬𝐩𝐚𝐦𝐦𝐢𝐧𝐠.<br>
-𝟔. 𝐀𝐯𝐨𝐢𝐝 𝐫𝐞𝐥𝐢𝐠𝐢𝐨𝐮𝐬/𝐩𝐨𝐥𝐢𝐭𝐢𝐜𝐚𝐥 𝐝𝐞𝐛𝐚𝐭𝐞𝐬.<br>
-𝟕. 𝐃𝐨 𝐧𝐨𝐭 𝐬𝐡𝐚𝐫𝐞 𝐥𝐢𝐧𝐤𝐬.<br>
-𝟖. 𝐍𝐨 𝐬𝐞𝐥𝐥𝐢𝐧𝐠.<br>
-𝟗. 𝐃𝐨 𝐧𝐨𝐭 𝐬𝐡𝐚𝐫𝐞 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐢𝐧𝐟𝐨.<br>
-𝟏𝟎. 𝐃𝐨𝐧’𝐭 𝐛𝐞𝐠 𝐟𝐨𝐫 𝐫𝐨𝐥𝐞𝐬.
+    1. Do not impersonate others.<br>
+    2. No inappropriate content.<br>
+    3. Keep drama away.<br>
+    4. No sexual content.<br>
+    5. No spamming.<br>
+    6. Avoid religious/political debates.<br>
+    7. Do not share links.<br>
+    8. No selling.<br>
+    9. Do not share personal info.<br>
+    10. Don’t beg for roles.
   </div>
 </section>
 
 <section id="about">
   <h2>About</h2>
-  <p>Hi I am Chethan! Please subscribe to my channel <a href="https://www.youtube.com/@Chethanorg" target="_blank">youtube.com/@Chethanorg</a> and join my Discord community!</p>
+  <p>Hi, I am Chethan. Please subscribe to my YouTube channel:</p>
+  <p><a href="https://www.youtube.com/@Chethanorg" target="_blank">youtube.com/@Chethanorg</a></p>
+  <p>Join my Discord server:</p>
+  <p><a href="https://discord.gg/PmXzbjN8Pq" target="_blank">discord.gg/PmXzbjN8Pq</a></p>
 </section>
 
 <section id="team">
-  <h2>Team</h2>
-  <div class="ranks-container">
-    <div class="rank-card"><h4 style="color:crimson;">OWNER</h4><p>Chethan</p></div>
-    <div class="rank-card"><h4 style="color:orange;">ADMIN</h4><p>GamerBoy</p></div>
-    <div class="rank-card"><h4 style="color:blue;">STAFF</h4><p>Sai</p></div>
-  
+  <h2>Our Team</h2>
+  <div class="card-container">
+    <div class="product-card"><h4>Chethan</h4><p>OWNER</p></div>
+    <div class="product-card"><h4>Cisco</h4><p>ADMIN</p></div>
+    <div class="product-card"><h4>Gamerboy</h4><p>STAFF</p></div>
+    <div class="product-card"><h4>Sai</h4><p>Moderator</p></div>
+  </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Join our Discord and create a ticket for support: <a href="https://discord.gg/PmXzbjN8Pq" target="_blank">https://discord.gg/PmXzbjN8Pq</a></p>
+  <p>Need help? Join our <a href="https://discord.gg/PmXzbjN8Pq" target="_blank">Discord server</a> and open a support ticket.</p>
 </section>
 
 <script>
   function showSection(id) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 </script>
