@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>VexedStore</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #cce7ff; /* Light blue */
+      background: #001933;
+      color: white;
     }
     header {
-      background: #111;
+      background: #000;
       color: white;
       padding: 15px 30px;
       display: flex;
@@ -20,12 +21,33 @@
       top: 0;
       z-index: 1000;
     }
+    .nav-left {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
     .nav-links a {
       color: white;
-      margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
+      margin: 0 15px;
+    }
+    .login-button, .cart-button {
+      background: #007bff;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .login-button:hover, .cart-button:hover {
+      background: #0056b3;
     }
     section {
       display: none;
@@ -36,25 +58,6 @@
     section.active {
       display: block;
     }
-    /* Orange Join Now card for Home */
-    #home .join-now {
-      background-color: orange;
-      color: white;
-      display: inline-block;
-      padding: 15px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(255, 140, 0, 0.6);
-      transition: transform 0.2s;
-    }
-    #home .join-now:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(255, 140, 0, 0.9);
-    }
-    /* Dark blue cards for all other sections */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -62,109 +65,113 @@
       justify-content: center;
     }
     .product-card {
-      background: #1a237e; /* Dark blue */
+      background: #003366;
       color: white;
       padding: 20px;
       border-radius: 8px;
       width: 200px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       transition: transform 0.2s;
+    }
+    .product-card button {
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #28a745;
+      border: none;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
     }
     .product-card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 15px #ffa500;
     }
-    /* Rules section styling with dark blue background and white text */
-    #rules .rules-list {
+    .rules-list {
       font-size: 1.1em;
       white-space: pre-line;
       color: white;
-      background: #1a237e; /* Dark blue */
-      padding: 20px 30px;
-      border-radius: 8px;
-      max-width: 700px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
     #contact a {
-      color: #007bff;
+      color: #00bfff;
       text-decoration: none;
     }
-    .server-title {
-      font-size: 24px;
+    .join-card {
+      background: orange;
+      color: white;
       font-weight: bold;
-      color: #222;
-      margin-bottom: 20px;
-      text-align: center;
+    }
+    #cart-items {
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .hidden {
+      display: none;
+    }
+    .pay-button {
+      background: #28a745;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div><strong>VexedStore</strong></div>
-  <nav class="nav-links">
-    <a onclick="showSection('home')">Home</a>
-    <a onclick="showSection('store')">Store</a>
-    <a onclick="showSection('server')">Server</a>
-    <a onclick="showSection('rules')">Rules</a>
-    <a onclick="showSection('about')">About</a>
-    <a onclick="showSection('team')">Team</a>
-    <a onclick="showSection('contact')">Contact</a>
-  </nav>
+  <div class="nav-left">VexedStore</div>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('store')">Store</a>
+      <a onclick="showSection('server')">Server</a>
+      <a onclick="showSection('rules')">Rules</a>
+      <a onclick="showSection('about')">About</a>
+      <a onclick="showSection('team')">Team</a>
+      <a onclick="showSection('contact')">Contact</a>
+      <a id="cartTab" class="hidden" onclick="showSection('cart')">Cart</a>
+    </nav>
+    <button id="loginBtn" class="login-button" onclick="login()">Login</button>
+  </div>
 </header>
 
 <section id="home" class="active">
   <h1>Welcome to VexedStore</h1>
   <p>Hello, I am CHETHAN. Buy ranks, coins, and crate keys to support our server!</p>
-  <div>
-    <span class="join-now" onclick="showSection('server')">Join Now</span>
+  <div class="card-container">
+    <div class="product-card join-card" onclick="showSection('server')">Join Now</div>
   </div>
 </section>
 
 <section id="store">
   <h2>Store</h2>
+  <div id="store-products" class="card-container"></div>
+</section>
 
-  <h3>Ranks</h3>
-  <div class="card-container">
-    <div class="product-card" onclick="window.location.href='elite.html'"><h4 style="color: plum;">ELITE</h4><p>₹1,080</p></div>
-    <div class="product-card" onclick="window.location.href='overlord.html'"><h4 style="color: darkred;">OVERLORD</h4><p>₹730</p></div>
-    <div class="product-card" onclick="window.location.href='vipplus.html'"><h4 style="color: goldenrod;">VIP+</h4><p>₹650</p></div>
-    <div class="product-card" onclick="window.location.href='mvp.html'"><h4 style="color: lightblue;">MVP</h4><p>₹519</p></div>
-    <div class="product-card" onclick="window.location.href='vip.html'"><h4 style="color: gold;">VIP</h4><p>₹360</p></div>
-    <div class="product-card" onclick="window.location.href='karen.html'"><h4 style="color: salmon;">Karen</h4><p>₹240</p></div>
-    <div class="product-card" onclick="window.location.href='rookie.html'"><h4 style="color: gray;">Rookie</h4><p>₹150</p></div>
-  </div>
-
-  <h3>Coins</h3>
-  <div class="card-container">
-    <div class="product-card" onclick="window.location.href='coins1000.html'"><h4>1,000 Coins</h4><p>₹100</p></div>
-    <div class="product-card" onclick="window.location.href='coins2000.html'"><h4>2,000 Coins</h4><p>₹180</p></div>
-    <div class="product-card" onclick="window.location.href='coins5000.html'"><h4>4,000 + 1,000 Free</h4><p>₹320</p></div>
-  </div>
-
-  <h3>Crate Keys</h3>
-  <div class="card-container">
-    <div class="product-card" onclick="window.location.href='seasonal.html'"><h4>Seasonal Crate</h4><p>₹599</p></div>
-    <div class="product-card" onclick="window.location.href='legendary.html'"><h4>Legendary Crate</h4><p>₹499</p></div>
-    <div class="product-card" onclick="window.location.href='ultimate.html'"><h4>Ultimate Crate</h4><p>₹349</p></div>
-    <div class="product-card" onclick="window.location.href='prime.html'"><h4>Prime Crate</h4><p>₹199</p></div>
-  </div>
+<section id="cart">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <button id="payBtn" class="pay-button hidden">PAY</button>
 </section>
 
 <section id="server">
-  <div class="server-title" style="color:#222; font-weight:bold;">Server Features</div>
+  <h2>Server</h2>
   <div class="card-container">
-    <div class="product-card"><strong>IP Address</strong><br>gold.magmanode.com</div>
-    <div class="product-card"><strong>Port</strong><br>69420</div>
-    <div class="product-card" onclick="showSection('rules')"><strong>Rules</strong><br>View Server Rules</div>
-    <div class="product-card"><strong>Leaderboards</strong><br><a href="https://dev.bukkit.org/projects/holographic-displays" target="_blank" style="color: #ffa500;">HolographicDisplays</a></div>
-    <div class="product-card"><strong>Any Version</strong><br><a href="https://www.spigotmc.org/resources/viaversio.19254/" target="_blank" style="color: #ffa500;">ViaVersion</a></div>
-    <div class="product-card"><strong>Player Shops</strong><br><a href="https://www.spigotmc.org/resources/economyshopgui.69927/" target="_blank" style="color: #ffa500;">EconomyShopGUI</a></div>
-    <div class="product-card"><strong>Coin Shop</strong><br><a href="https://www.spigotmc.org/resources/coinshop-reward-your-players-with-a-custom-currency.109019/" target="_blank" style="color: #ffa500;">CoinShop Plugin</a></div>
-    <div class="product-card"><strong>Land Claims</strong><br><a href="https://dev.bukkit.org/projects/landclaiming" target="_blank" style="color: #ffa500;">LandClaiming</a></div>
+    <div class="product-card">IP: In Future</div>
+    <div class="product-card">Port: In Future</div>
+    <div class="product-card" onclick="showSection('rules')">View Rules</div>
   </div>
 </section>
 
@@ -196,9 +203,9 @@
   <h2>Our Team</h2>
   <div class="card-container">
     <div class="product-card"><h4>Chethan</h4><p>OWNER</p></div>
-    <div class="product-card"><h4>Cisco</h4><p>ADMIN</p></div>
-    <div class="product-card"><h4>Gamerboy</h4><p>STAFF</p></div>
-    <div class="product-card"><h4>Sai</h4><p>Moderator</p></div>
+    <div class="product-card"><h4>Gamerboy</h4><p>ADMIN</p></div>
+    <div class="product-card"><h4>Sai</h4><p>STAFF</p></div>
+    <div class="product-card"><h4>Cisco</h4><p>Moderator</p></div>
   </div>
 </section>
 
@@ -208,10 +215,108 @@
 </section>
 
 <script>
+  const products = [
+    { name: 'ELITE', price: 1080 },
+    { name: 'OVERLORD', price: 730 },
+    { name: 'VIP+', price: 650 },
+    { name: 'MVP', price: 519 },
+    { name: 'VIP', price: 360 },
+    { name: 'Karen', price: 240 },
+    { name: 'Rookie', price: 150 },
+    { name: '1,000 Coins', price: 100 },
+    { name: '2,000 Coins', price: 180 },
+    { name: '4,000 + 1,000 Free', price: 320 },
+    { name: 'Seasonal Crate', price: 599 },
+    { name: 'Legendary Crate', price: 499 },
+    { name: 'Ultimate Crate', price: 349 },
+    { name: 'Prime Crate', price: 199 }
+  ];
+
+  let loggedIn = false;
+  let cart = {};
+  let minecraftID = "";
+
+  function login() {
+    const id = prompt("Enter your Minecraft ID (min 5 characters):");
+    if (id && id.length >= 5) {
+      loggedIn = true;
+      minecraftID = id;
+      document.getElementById("loginBtn").textContent = id;
+      document.getElementById("cartTab").classList.remove("hidden");
+    } else {
+      alert("Invalid Minecraft ID. Must be at least 5 characters.");
+    }
+  }
+
   function showSection(id) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    if (id === 'cart') renderCart();
   }
+
+  function renderProducts() {
+    const container = document.getElementById("store-products");
+    products.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `<strong>${p.name}</strong><br>₹${p.price}<div id="${p.name}-btn"></div>`;
+      container.appendChild(card);
+      updateProductUI(p.name);
+    });
+  }
+
+  function updateProductUI(name) {
+    const div = document.getElementById(`${name}-btn`);
+    if (!cart[name]) {
+      div.innerHTML = `<button onclick="addToCart('${name}')">Add to Cart</button>`;
+    } else {
+      div.innerHTML = `
+        <button onclick="changeQty('${name}', -1)">-</button>
+        ${cart[name].qty}
+        <button onclick="changeQty('${name}', 1)">+</button>
+      `;
+    }
+  }
+
+  function addToCart(name) {
+    const product = products.find(p => p.name === name);
+    if (!cart[name]) cart[name] = { ...product, qty: 1 };
+    updateProductUI(name);
+  }
+
+  function changeQty(name, change) {
+    cart[name].qty += change;
+    if (cart[name].qty <= 0) delete cart[name];
+    updateProductUI(name);
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById("cart-items");
+    const payBtn = document.getElementById("payBtn");
+    cartItems.innerHTML = "";
+    let total = 0;
+    for (let item in cart) {
+      const div = document.createElement("div");
+      const sub = cart[item].qty * cart[item].price;
+      total += sub;
+      div.className = "cart-item";
+      div.innerHTML = `<strong>${item}</strong><br>Qty: ${cart[item].qty} | ₹${sub}<br><button onclick="changeQty('${item}', -1)">-</button> <button onclick="changeQty('${item}', 1)">+</button>`;
+      cartItems.appendChild(div);
+    }
+    if (Object.keys(cart).length === 0) {
+      cartItems.innerHTML = "Cart is empty.";
+      payBtn.classList.add("hidden");
+    } else {
+      payBtn.classList.remove("hidden");
+      payBtn.onclick = () => {
+        const upiLink = `upi://pay?pa=bargavi1204@ybl&pn=VexedStore&cu=INR&am=${total}`;
+        window.location.href = upiLink;
+      };
+    }
+  }
+
+  renderProducts();
 </script>
 
 </body>
